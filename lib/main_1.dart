@@ -23,19 +23,32 @@ class MyApp extends StatelessWidget {
         ),
         //bodyde metin yazbilmek için
         body: Container(
-          color: Colors.blue,
-          child: Center(
-            //height factor ve width factor içerdeki container'ın x katı kadar yer kaplar
-            widthFactor: 2,
-            heightFactor: 2,
-            child: Container(
-              width: 100,
-              height: 100,
-              color: Colors.red,
-              child: Text('Ömer'),
-            ),
-          ),
-        ),
+          // alignment: Alignment(1, 1),
+          //aligment kullandığımızda içerisindeki veri kadar yer kaplıyor
+          // width: 200,
+          //height: 300,
+          color: Colors.teal,
+          width: 100,
+          height: 200,
+          child: Text('ömer' * 10, textAlign: TextAlign.center),
+
+          //margin: EdgeInsets.all(50),
+          //margin: EdgeInsets.only(left: 10, top: 30),
+          //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 70),
+          margin: EdgeInsets.all(30),
+
+          // text ile container arasındanki mesafe için padding kullanıyoruz
+
+          //minimum %100 lük bir alan kaplamasını istiyorsak alttaki yapıyı kullanacağız. belirlediğimiz alan kadar yer tutar
+//          constraints: BoxConstraints(
+          //            minHeight: 100, minWidth: 100, maxHeight: 200, maxWidth: 200),
+        ), // bir container çocuğu kadar yer kaplar
+
+        /*Text('Merhaba Dünya',
+            style: TextStyle(
+                color: Colors.red, fontSize: 24, fontWeight: FontWeight.bold)),
+                */
+        //buton oluşturmak için
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             //ekrana yazdırmak için debug print komutu kullanılır
@@ -46,8 +59,8 @@ class MyApp extends StatelessWidget {
           },
           //child widget içerisine konulackak elemanı temsil ediyor.
           //birden fazla eleman için children kullanılacak
-          child: Icon(Icons.account_circle_rounded, color: Colors.blue),
-          backgroundColor: Colors.red,
+          child: Icon(Icons.account_circle_rounded, color: Colors.red),
+          backgroundColor: Colors.amber,
         ),
       ),
     );

@@ -22,20 +22,22 @@ class MyApp extends StatelessWidget {
           // eğer bir widgetin içerisine birşey koyacaksak child olarak bir yapısı vardır.
         ),
         //bodyde metin yazbilmek için
-        body: Container(
-          color: Colors.blue,
-          child: Center(
-            //height factor ve width factor içerdeki container'ın x katı kadar yer kaplar
-            widthFactor: 2,
-            heightFactor: 2,
-            child: Container(
-              width: 100,
-              height: 100,
+        body: Center(
+          child: Container(
+              width: 200,
+              height: 200,
               color: Colors.red,
-              child: Text('Ömer'),
-            ),
-          ),
+              //alignment: Alignment.center,
+              child: Container(
+                alignment: Alignment.center,
+                color: Colors.blue,
+                margin: EdgeInsets.all(20),
+                width: 50,
+                height: 50,
+                child: Text('Ömer'),
+              )),
         ),
+
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             //ekrana yazdırmak için debug print komutu kullanılır
@@ -46,8 +48,8 @@ class MyApp extends StatelessWidget {
           },
           //child widget içerisine konulackak elemanı temsil ediyor.
           //birden fazla eleman için children kullanılacak
-          child: Icon(Icons.account_circle_rounded, color: Colors.blue),
-          backgroundColor: Colors.red,
+          child: Icon(Icons.account_circle_rounded, color: Colors.red),
+          backgroundColor: Colors.amber,
         ),
       ),
     );
