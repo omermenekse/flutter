@@ -21,19 +21,13 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         //backgroundColor: Colors.yellow,
         appBar: AppBar(
-          backgroundColor: Colors.amber,
           title: Text('başlık'),
+
+          backgroundColor: Colors.amber,
           // eğer bir widgetin içerisine birşey koyacaksak child olarak bir yapısı vardır.
         ),
         //bodyde metin yazbilmek için
-        body: Container(
-          color: Colors.black,
-          child: Row(
-            children: <Widget>[
-              Icon(Icons.add_circle, size: 64, color: Colors.green)
-            ],
-          ),
-        ),
+        body: containerDersleri(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             //ekrana yazdırmak için debug print komutu kullanılır
@@ -53,34 +47,37 @@ class MyApp extends StatelessWidget {
 
   Widget containerDersleri() {
     return Center(
-      child: Container(
-        padding: EdgeInsets.all(20),
-        //container içerisindekşşekilin rengi
-        // color: Colors.red,
-        child: FlutterLogo(
-          //style: FlutterLogoStyle.stacked,
-          size: 64,
-          //textColor: Colors.red,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          //container içerisindekşşekilin rengi
+          // color: Colors.red,
+          child: FlutterLogo(
+            //style: FlutterLogoStyle.stacked,
+            size: 64,
+            //textColor: Colors.red,
+          ),
+          //gölge vermek için arka plan için
+          //box decorationda verdiğimiz özellikleri containerda da varsa kullanamayız
+          decoration: BoxDecoration(
+              color: Colors.orange,
+              shape: BoxShape.rectangle,
+              border: Border.all(width: 4, color: Colors.purple),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  topRight: Radius.circular(30)),
+              image: DecorationImage(
+                  image: NetworkImage(_img1), fit: BoxFit.cover),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.green,
+                    offset: Offset.fromDirection(10, 20),
+                    blurRadius: 10),
+                BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(0, -20),
+                    blurRadius: 20)
+              ]),
         ),
-        //gölge vermek için arka plan için
-        //box decorationda verdiğimiz özellikleri containerda da varsa kullanamayız
-        decoration: BoxDecoration(
-            color: Colors.orange,
-            shape: BoxShape.rectangle,
-            border: Border.all(width: 4, color: Colors.purple),
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            image:
-                DecorationImage(image: NetworkImage(_img1), fit: BoxFit.cover),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.green,
-                  offset: Offset.fromDirection(10, 20),
-                  blurRadius: 10),
-              BoxShadow(
-                  color: Colors.black, offset: Offset(0, -20), blurRadius: 20)
-            ]),
-      ),
-    );
+      );
   }
 }

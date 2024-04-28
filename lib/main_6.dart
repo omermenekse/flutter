@@ -21,17 +21,15 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         //backgroundColor: Colors.yellow,
         appBar: AppBar(
-          backgroundColor: Colors.amber,
           title: Text('başlık'),
+
+          backgroundColor: Colors.amber,
           // eğer bir widgetin içerisine birşey koyacaksak child olarak bir yapısı vardır.
         ),
         //bodyde metin yazbilmek için
         body: Container(
-          color: Colors.black,
           child: Row(
-            children: <Widget>[
-              Icon(Icons.add_circle, size: 64, color: Colors.green)
-            ],
+            children: <Widget>[Icon(Icons.add_circle)],
           ),
         ),
         floatingActionButton: FloatingActionButton(
