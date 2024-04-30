@@ -28,9 +28,21 @@ class MyApp extends StatelessWidget {
         //bodyde metin yazbilmek için
         body: Container(
           color: Colors.black,
-          child: Row(
+          // height: 400,
+          //childı column veya row yapmaya göre aşağıda verilen aligment özellikleri
+          //değişmektedir.
+          child: Column(
+            //ilgi satırın size'ı varsayılan olarak verilmiştir.
+            /*   mainAxisSize:
+                MainAxisSize.max, //sadece içeriğin kadar yer tut anlamındadır
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch, */
+
             children: <Widget>[
-              Icon(Icons.add_circle, size: 64, color: Colors.green)
+              Icon(Icons.add_circle, size: 64, color: Colors.green),
+              Icon(Icons.add_circle, size: 64, color: Colors.red),
+              Icon(Icons.add_circle, size: 64, color: Colors.blue),
+              Icon(Icons.add_circle, size: 64, color: Colors.yellow)
             ],
           ),
         ),
