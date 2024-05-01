@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -27,72 +28,158 @@ class MyApp extends StatelessWidget {
         ),
         //bodyde metin yazbilmek için
         body: Container(
-          color: Colors.black,
-          // height: 400,
-          //childı column veya row yapmaya göre aşağıda verilen aligment özellikleri
-          //değişmektedir.
-          child: Column(
-            //ilgi satırın size'ı varsayılan olarak verilmiştir.
-            /*   mainAxisSize:
-                MainAxisSize.max, //sadece içeriğin kadar yer tut anlamındadır
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.stretch, */
-
-            children: <Widget>[
-              Icon(Icons.add_circle, size: 64, color: Colors.green),
-              Icon(Icons.add_circle, size: 64, color: Colors.red),
-              Icon(Icons.add_circle, size: 64, color: Colors.blue),
-              Icon(Icons.add_circle, size: 64, color: Colors.yellow)
-            ],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: filexibleContainer,
+            //children: expandedContainer,
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            //ekrana yazdırmak için debug print komutu kullanılır
-            //console yazdırıyor
-            // Colors.yellow;
-            //burası isimlendirilmemiş bir fonksiyondur
-            debugPrint('Tıklandı');
-          },
-          //child widget içerisine konulackak elemanı temsil ediyor.
-          //birden fazla eleman için children kullanılacak
-          child: Icon(Icons.account_circle_rounded, color: Colors.blue),
-          backgroundColor: Colors.red,
         ),
       ),
     );
   }
+  /*
+  ctrl+shift+ p 
+  dev tools in browser ile browser üzerinde hata giderimi yapabiliyoruz
+  */
 
-  Widget containerDersleri() {
-    return Center(
-      child: Container(
-        padding: EdgeInsets.all(20),
-        //container içerisindekşşekilin rengi
-        // color: Colors.red,
-        child: FlutterLogo(
-          //style: FlutterLogoStyle.stacked,
-          size: 64,
-          //textColor: Colors.red,
-        ),
-        //gölge vermek için arka plan için
-        //box decorationda verdiğimiz özellikleri containerda da varsa kullanamayız
-        decoration: BoxDecoration(
-            color: Colors.orange,
-            shape: BoxShape.rectangle,
-            border: Border.all(width: 4, color: Colors.purple),
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            image:
-                DecorationImage(image: NetworkImage(_img1), fit: BoxFit.cover),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.green,
-                  offset: Offset.fromDirection(10, 20),
-                  blurRadius: 10),
-              BoxShadow(
-                  color: Colors.black, offset: Offset(0, -20), blurRadius: 20)
-            ]),
+  List<Widget> get sorunluContainer {
+    //burada expand ıt ile sarmalama yaparsak herhangi bir sorun yaşamayız
+    return [
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.yellow,
       ),
-    );
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.red,
+      ),
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.blue,
+      ),
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.purple,
+      ),
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.green,
+      ),
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.brown,
+      ),
+      Container(
+        width: 75,
+        height: 75,
+        color: Colors.black,
+      ),
+    ];
+  }
+
+  List<Widget> get filexibleContainer {
+    //burada expand ıt ile sarmalama yaparsak herhangi bir sorun yaşamayız
+    return [
+      //container genişliğine göre container filexible olduğunda kendisi ayarlıyor
+      //içerik kadar yer tut lazımsa küçül
+      Flexible(
+        flex: 1,
+        child: Container(
+          width: 200,
+          height: 300,
+          color: Colors.red,
+        ),
+      ),
+      Flexible(
+        flex: 1,
+        child: Container(
+          width: 300,
+          height: 300,
+          color: Colors.yellow,
+        ),
+      ),
+      Flexible(
+        flex: 1,
+        child: Container(
+          width: 300,
+          height: 300,
+          color: Colors.green,
+        ),
+      ),
+      Flexible(
+        flex: 1,
+        child: Container(
+          width: 300,
+          height: 300,
+          color: Colors.purple,
+        ),
+      ),
+    ];
+  }
+
+  List<Widget> get expandedContainer {
+    //burada expand ıt ile sarmalama yaparsak herhangi bir sorun yaşamayız
+    //expanded container ile containerlar kendi genişliklerini otomatik olarak ayarlamaktadırlar.,
+    //expanded şu demektir. atrık yükseklik ve geniş değerlerinin önemi yok elemanları bol alana uygun bir şekilde yerleştir.
+    return [
+      Expanded(
+        //toplam kullanılan alanı flex değerine böleerek herbir flex için bir değer ataması yaptıktan sonra o katsayı ile çarparak değeri verir.
+        flex: 1,
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.yellow,
+        ),
+      ),
+      Expanded(
+        flex: 3,
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.red,
+        ),
+      ),
+      Expanded(
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.blue,
+        ),
+      ),
+      Expanded(
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.purple,
+        ),
+      ),
+      Expanded(
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.green,
+        ),
+      ),
+      Expanded(
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.brown,
+        ),
+      ),
+      Expanded(
+        child: Container(
+          width: 75,
+          height: 75,
+          color: Colors.black,
+        ),
+      ),
+    ];
   }
 }
